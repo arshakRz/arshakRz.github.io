@@ -6,7 +6,7 @@ subtitle:
 
 profile:
   align: right
-  image: 10.jpg
+  image: arshak.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
 
@@ -24,11 +24,11 @@ latest_posts: false
   # limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi there! I'm Amirabbas Afzali, an undergraduate student in Electrical Engineering with a minor in Mathematics at Sharif University of Technology. Over the past few years, I’ve developed a strong passion for the theory and practice of machine learning, especially at the intersection of optimization, reinforcement learning, and human-AI alignment.
+Hi, I’m Arshak Rezvani. I graduated in Electrical Engineering (Bioelectric track) from Sharif University of Technology. I’m passionate about training neural networks on biomedical data and exploring generative AI—especially diffusion-based models—as well as neural ODEs for sampling from complex data distributions.
 
 My recent work spans a variety of exciting research areas, including:
 
-* Trustworthy AI & Adversarial Machine Learning
-* Preference Optimization and AI Alignment
-* Theory of Optimization and Machine Learning
-* Reinforcement Learning, with a focus on Offline RL and Robust RL
+* Generative AI & Diffusion Models
+* AI in Healthcare and Biomedical Applications
+* Preference Optimization & AI Alignment
+* Contrastive Learning & CLIP-style Multimodal Pretraining

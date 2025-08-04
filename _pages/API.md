@@ -1,3 +1,11 @@
+---
+layout: page
+title: upload
+permalink: /upload/
+nav: true
+nav_order: 5
+---
+
 <h2>📤 upload an Image</h2>
 <form id="upload-form" enctype="multipart/form-data">
   <input type="file" name="file" id="file-input" accept="image/*" required>

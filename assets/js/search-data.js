@@ -24,7 +24,7 @@ ninja.data = [{
             window.location.href = "/cv/";
           },
         },{id: "nav-upload",
-          title: "upload",
+          title: "Upload",
           description: "",
           section: "Navigation",
           handler: () => {

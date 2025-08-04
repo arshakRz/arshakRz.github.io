@@ -1,23 +1,28 @@
 ---
 layout: page
-title: API
-permalink: /API/
+title: Upload
+permalink: /upload/
 nav: true
-nav_order: 10
+nav_order: 5
 ---
 
-<h1>My API</h1>
-<p id="date">Loading date...</p>
-<p id="zohoor">Checking status...</p>
+<h1>🕒 Current Time</h1>
+<p id="time">Loading time...</p>
+
+<h2>📤 Upload an Image</h2>
+<form id="upload-form" enctype="multipart/form-data">
+  <input type="file" name="file" id="file-input" accept="image/*">
+  <button type="submit">Upload</button>
+</form>
+<p id="upload-status">Waiting for upload feature...</p>
 
 <script>
-  fetch("https://arshakrz-api-zohoor.hf.space/")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("date").textContent = "📅 Date: " + data.date;
-    })
-    .catch(error => {
-      document.getElementById("zohoor").textContent = "⚠️ Failed to load data.";
-      console.error("Error:", error);
-    });
+fetch("https://arshakrz-api-zohoor.hf.space/")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("time").textContent = "⏰ Time: " + data.time;
+  })
+  .catch(() => {
+    document.getElementById("time").textContent = "❌ Failed to load time.";
+  });
 </script>

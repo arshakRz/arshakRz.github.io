@@ -2,6 +2,8 @@
 layout: page
 title: Zohoor
 permalink: /zohoor/
+nav: true
+nav_order: 10
 ---
 
 <h1>🕌 Emam Zaman Zohoor API</h1>

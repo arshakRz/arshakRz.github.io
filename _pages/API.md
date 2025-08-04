@@ -1,82 +1,108 @@
 ---
 layout: page
-title: upload
-permalink: /upload/
+title: Fourier Contour Animation
+permalink: /fourier/
 nav: true
-nav_order: 5
+nav_order: 6
 ---
 
-<h2>📤 upload an Image</h2>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+  }
+  h1, h2 {
+    margin-bottom: 0.5rem;
+  }
+  #images {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  #images img, #images video {
+    max-width: 300px;
+    border: 1px solid #ccc;
+  }
+</style>
+
+<h1>🕒 Current Time</h1>
+<p id="time">🕒 Loading time...</p>
+
+<h2>📤 Upload an Image</h2>
 <form id="upload-form" enctype="multipart/form-data">
   <input type="file" name="file" id="file-input" accept="image/*" required>
   <button type="submit">Upload</button>
 </form>
-
 <p id="upload-status">Waiting for upload...</p>
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+<div id="images">
   <div>
-    <h3 style="text-align: center;">Original</h3>
-    <img id="original-image"
-         style="width: 250px; height: auto; border: 1px solid #ccc; display: none;">
+    <h3>Original Image</h3>
+    <img id="original-img" src="" alt="Original will show here" />
   </div>
   <div>
-    <h3 style="text-align: center;">Edge Detected</h3>
-    <img id="output-image"
-         style="width: 250px; height: auto; border: 1px solid #ccc; display: none;">
+    <h3>Processed Animation</h3>
+    <video id="result-video" controls autoplay loop muted></video>
   </div>
 </div>
 
 <script>
-const apiBase = "https://arshakrz-simple-api-arshak.hf.space";
+  const apiBase = "https://arshakrz-simple-api-arshak.hf.space";
 
-// Load time
-fetch(`${apiBase}/`)
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("time").textContent = "⏰ Time: " + data.time;
-  })
-  .catch(() => {
-    document.getElementById("time").textContent = "❌ Failed to load time.";
-  });
-
-// Handle upload
-document.getElementById("upload-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const fileInput = document.getElementById("file-input");
-  const file = fileInput.files[0];
-
-  const formData = new FormData();
-  formData.append("file", file);
-
-  // Show original preview
-  const originalURL = URL.createObjectURL(file);
-  const originalImage = document.getElementById("original-image");
-  originalImage.src = originalURL;
-  originalImage.style.display = "block";
-
-  document.getElementById("upload-status").textContent = "⏳ Uploading...";
-  document.getElementById("output-image").style.display = "none";
-
-  try {
-    const res = await fetch(`${apiBase}/upload`, {
-      method: "POST",
-      body: formData
+  // Optional time fetch from API
+  fetch(`${apiBase}/`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("time").textContent = "⏰ Time: " + data.time;
+    })
+    .catch(() => {
+      document.getElementById("time").textContent = "❌ Failed to load time.";
     });
 
-    if (!res.ok) throw new Error("Processing failed");
+  document.getElementById("upload-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-    const blob = await res.blob();
-    const outputURL = URL.createObjectURL(blob);
+    const fileInput = document.getElementById("file-input");
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
 
-    const outputImage = document.getElementById("output-image");
-    outputImage.src = outputURL;
-    outputImage.style.display = "block";
+    // STEP 1: Show uploaded image immediately
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      document.getElementById("original-img").src = event.target.result;
+    };
+    reader.readAsDataURL(file);
 
-    document.getElementById("upload-status").textContent = "✅ Edge detection complete";
-  } catch (err) {
-    document.getElementById("upload-status").textContent = "❌ Upload failed.";
-    console.error(err);
-  }
-});
+    // STEP 2: Update status to uploading
+    document.getElementById("upload-status").textContent = "📤 Uploading...";
+
+    try {
+      // STEP 3: Start fetch and immediately update to processing
+      const fetchPromise = fetch(`${apiBase}/upload`, {
+        method: "POST",
+        body: formData
+      });
+
+      document.getElementById("upload-status").textContent = "⚙️ Processing...";
+
+      // STEP 4: Await fetch result
+      const response = await fetchPromise;
+      const data = await response.json();
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const videoEl = document.getElementById("result-video");
+      if (data.video_base64) {
+        videoEl.src = data.video_base64;
+        videoEl.load();
+        document.getElementById("upload-status").textContent = "✅ Done!";
+      } else {
+        throw new Error("No video in response");
+      }
+    } catch (err) {
+      console.error(err);
+      document.getElementById("upload-status").textContent = "❌ Upload failed.";
+    }
+  });
 </script>

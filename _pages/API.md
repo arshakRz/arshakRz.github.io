@@ -6,7 +6,7 @@ nav: true
 nav_order: 10
 ---
 
-<h1>🕌 My API</h1>
+<h1>My API</h1>
 <p id="date">Loading date...</p>
 <p id="zohoor">Checking status...</p>
 

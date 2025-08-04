@@ -23,12 +23,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "nav-upload",
-          title: "upload",
+        },{id: "nav-fourier-contour-animation",
+          title: "Fourier Contour Animation",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/upload/";
+            window.location.href = "/fourier/";
           },
         },{id: "post-a-post-with-plotly-js",
         

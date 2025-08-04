@@ -1,15 +1,4 @@
----
-layout: page
-title: Upload
-permalink: /upload/
-nav: true
-nav_order: 5
----
-
-<h1>🕒 Current Time</h1>
-<p id="time">Loading time...</p>
-
-<h2>📤 Upload an Image</h2>
+<h2>📤 upload an Image</h2>
 <form id="upload-form" enctype="multipart/form-data">
   <input type="file" name="file" id="file-input" accept="image/*" required>
   <button type="submit">Upload</button>
@@ -17,14 +6,23 @@ nav_order: 5
 
 <p id="upload-status">Waiting for upload...</p>
 
-<h2>🖼️ Processed Image</h2>
-<img id="output-image" style="max-width: 100%; border: 1px solid #ccc; display: none;">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  <div>
+    <h3 style="text-align: center;">Original</h3>
+    <img id="original-image"
+         style="width: 250px; height: auto; border: 1px solid #ccc; display: none;">
+  </div>
+  <div>
+    <h3 style="text-align: center;">Edge Detected</h3>
+    <img id="output-image"
+         style="width: 250px; height: auto; border: 1px solid #ccc; display: none;">
+  </div>
+</div>
 
 <script>
-// === Config ===
-const apiBase = "https://arshakrz-simple-api-arshak.hf.space";  // Update if renamed
+const apiBase = "https://arshakrz-simple-api-arshak.hf.space";
 
-// === Load current time from API ===
+// Load time
 fetch(`${apiBase}/`)
   .then(res => res.json())
   .then(data => {
@@ -34,12 +32,20 @@ fetch(`${apiBase}/`)
     document.getElementById("time").textContent = "❌ Failed to load time.";
   });
 
-// === Handle image upload ===
+// Handle upload
 document.getElementById("upload-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const fileInput = document.getElementById("file-input");
+  const file = fileInput.files[0];
+
   const formData = new FormData();
-  formData.append("file", fileInput.files[0]);
+  formData.append("file", file);
+
+  // Show original preview
+  const originalURL = URL.createObjectURL(file);
+  const originalImage = document.getElementById("original-image");
+  originalImage.src = originalURL;
+  originalImage.style.display = "block";
 
   document.getElementById("upload-status").textContent = "⏳ Uploading...";
   document.getElementById("output-image").style.display = "none";
@@ -50,15 +56,16 @@ document.getElementById("upload-form").addEventListener("submit", async (e) => {
       body: formData
     });
 
-    if (!res.ok) throw new Error("Image processing failed");
+    if (!res.ok) throw new Error("Processing failed");
 
     const blob = await res.blob();
-    const imageURL = URL.createObjectURL(blob);
+    const outputURL = URL.createObjectURL(blob);
+
+    const outputImage = document.getElementById("output-image");
+    outputImage.src = outputURL;
+    outputImage.style.display = "block";
 
     document.getElementById("upload-status").textContent = "✅ Edge detection complete";
-    const img = document.getElementById("output-image");
-    img.src = imageURL;
-    img.style.display = "block";
   } catch (err) {
     document.getElementById("upload-status").textContent = "❌ Upload failed.";
     console.error(err);

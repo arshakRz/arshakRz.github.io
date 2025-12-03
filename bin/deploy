@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Run this script to deploy the app to Github Pages
-
+# A
 # Parse cmd arguments
 
 SRC_BRANCH="main"

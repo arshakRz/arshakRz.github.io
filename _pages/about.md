@@ -24,11 +24,11 @@ latest_posts: false
   # limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I’m Arshak Rezvani. I graduated in Electrical Engineering (Bioelectric track) from Sharif University of Technology. I’m passionate about training neural networks on biomedical data and exploring generative AI, especially diffusion-based models, along with neural ODEs for sampling from complex data distributions.
+Hi, I’m Arshak Rezvani. I am currently a Master’s student in Information and Communication Engineering at Technische Universität Darmstadt, with a background in Electrical Engineering (Bioelectric track) from Sharif University of Technology. I’m passionate about training neural networks to sample from complex data distributions :).
 
 My recent work spans a variety of exciting research areas, including:
 
 * Generative AI & Diffusion Models
 * AI in Healthcare and Biomedical Applications
-* Human Feedback–Driven RL (RLHF) and Alignment via Preference Optimization
+* Interpertability of Large Language Models 
 * Contrastive Learning & CLIP-style Multimodal Pretraining

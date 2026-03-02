@@ -11,12 +11,38 @@
 - title: Education
   type: time_table
   contents:
-    - title: B.Sc. 
+    - title: M.Sc.
+      institution: Technische Universität Darmstadt, Darmstadt, Germany
+      year: 2025 – Present
+      description:
+        - Master of Science, Information and Communication Engineering.
+
+    - title: B.Sc.
       institution: Sharif University of Technology, Tehran, Iran
       year: 2024
       description:
         - Bachelor of Science, Electrical Engineering.
         - Bioelectric Track, <u>Overall GPA:</u> 3.71/4.00.
+
+# - title: General Information
+#   type: map
+#   contents:
+#     - name: Full Name
+#       value: Arshak Rezvani
+#     - name: Date of Birth
+#       value: 12th September 2001
+#     - name: Languages
+#       value: English, Farsi
+
+# - title: Education
+#   type: time_table
+#   contents:
+#     - title: B.Sc. 
+#       institution: Sharif University of Technology, Tehran, Iran
+#       year: 2024
+#       description:
+#         - Bachelor of Science, Electrical Engineering.
+#         - Bioelectric Track, <u>Overall GPA:</u> 3.71/4.00.
         # - title: Description 3.
         #   contents:
         #     - Sub-description 1.

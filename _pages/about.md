@@ -24,7 +24,7 @@ latest_posts: false
   # limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I’m Arshak Rezvani. I am currently a Master’s student in Information and Communication Engineering at Technichal University of Darmstadt, with a background in Electrical Engineering (Bioelectric track) from Sharif University of Technology. I’m passionate about training neural networks to sample from complex data distributions :).
+Hi, I’m Arshak Rezvani. I am currently a Master’s student in Information and Communication Engineering at Technical University of Darmstadt, with a background in Electrical Engineering (Bioelectric track) from Sharif University of Technology. I’m passionate about training neural networks to sample from complex data distributions :).
 
 My recent work spans a variety of exciting research areas, including:
 

@@ -1,8 +1,9 @@
 ---
 layout: page
-title: A Special Question
+title: A Special Question for Sara
 permalink: /meow/
-nav: false
+nav: true
+nav_order: 7
 ---
 
 <style>

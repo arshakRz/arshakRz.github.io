@@ -64,7 +64,7 @@ nav_order: 7
 </style>
 
 <div class="proposal-container">
-  <img id="proposal-img" src="/assets/img/meow.webp" alt="Will you meow me?">
+  <img id="proposal-img" src="/assets/img/lead1_fe2b51.webp" alt="Will you meow me?">
 
   <div class="button-container">
     <button id="yes-btn" class="btn">Yes</button>

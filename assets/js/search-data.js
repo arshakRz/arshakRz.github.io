@@ -30,13 +30,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/fourier/";
           },
-        },{id: "nav-a-special-question-for-sara",
-          title: "A Special Question for Sara",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/meow/";
-          },
         },{id: "post-a-post-with-plotly-js",
         
           title: "a post with plotly.js",

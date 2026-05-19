@@ -2,8 +2,7 @@
 layout: page
 title: A Special Question for Sara
 permalink: /meow/
-nav: true
-nav_order: 7
+nav: false
 ---
 
 <style>
